@@ -126,6 +126,13 @@ AUTH_USER_MODEL = 'trips.User'
 
 STATIC_URL = '/static/'
 
+# Media Files -> The MEDIA_ROOT is the path to the 
+#                 directory where file uploads will be saved
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
+
 
 # Rest Framework 
 REST_FRAMEWORK = {

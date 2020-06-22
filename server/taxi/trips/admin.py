@@ -1,9 +1,28 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DefaultUserAdmin
 
-from .models import User
+from .models import Trip, User
 
 # alternative to admin.site.register(className) - use decorators
 @admin.register(User)
 class UserAdmin(DefaultUserAdmin):
     pass
+
+@admin.register(Trip)
+class TripAdmin(admin.ModelAdmin):
+    fields = ( # changed
+        'id', 'pick_up_address', 'drop_off_address', 'status',
+        'driver', 'rider',
+        'created', 'updated',
+    )
+    list_display = ( # changed
+        'id', 'pick_up_address', 'drop_off_address', 'status',
+        'driver', 'rider',
+        'created', 'updated',
+    )
+    list_filter = (
+        'status',
+    )
+    readonly_fields = (
+        'id', 'created', 'updated',
+    )
